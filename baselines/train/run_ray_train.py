@@ -8,6 +8,7 @@ from ray import air
 from ray import tune
 from configs import get_experiment_config
 from ray.rllib.algorithms import ppo
+from ray.rllib.algorithms import impala
 from ray.tune import registry
 from ray.air.integrations.wandb import WandbLoggerCallback
 from baselines.train import make_envs
@@ -116,6 +117,9 @@ if __name__ == "__main__":
   if args.algo == "ppo":
      trainer = "PPO"
      default_config = ppo.PPOConfig()
+  if args.algo == "impala":
+     trainer = "IMPALA"
+     default_config = impala.IMPALAConfig()
   else:
      print('The selected option is not tested. You may encounter issues if you use the baseline \
            policy configurations with non-tested algorithms')
