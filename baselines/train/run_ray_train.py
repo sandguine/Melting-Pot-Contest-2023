@@ -41,7 +41,7 @@ def get_cli_args():
   )
   parser.add_argument(
         "--algo",
-        choices=["ppo"],
+        choices=["ppo", "impala"],
         default="ppo",
         help="Algorithm to train agents.",
   )
@@ -119,7 +119,7 @@ if __name__ == "__main__":
      default_config = ppo.PPOConfig()
   if args.algo == "impala":
      trainer = "IMPALA"
-     default_config = impala.IMPALAConfig()
+     default_config = impala.ImpalaConfig()
   else:
      print('The selected option is not tested. You may encounter issues if you use the baseline \
            policy configurations with non-tested algorithms')
